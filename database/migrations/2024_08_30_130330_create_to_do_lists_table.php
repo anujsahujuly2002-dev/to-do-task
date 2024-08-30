@@ -14,15 +14,17 @@ return new class extends Migration
         Schema::create('to_do_lists', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
-            $table->text('description_text');
-            $table->date('due_date');
-            $table->unsignedBigInteger('assginee_id');
+            $table->text('description')->nullable();
+            $table->text('description_text')->nullable();
+            $table->date('due_date')->nullable();
+            $table->unsignedBigInteger('assginee_id')->nullable();
             $table->foreign('assginee_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('priority');
-            $table->string('tag');
+            $table->string('priority')->nullable();
+            $table->string('tag')->nullable();
+            $table->unsignedBigInteger('status_id')->nullable();
+            $table->foreign('status_id')->references('id')->on('statuses')->cascadeOnDelete()->cascadeOnUpdate();  
             $table->timestamps();
         });
     }

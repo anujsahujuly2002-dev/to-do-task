@@ -34,14 +34,6 @@ class UserCreateSeeder extends Seeder
             "email"=>"admin@gmail.com",
             "password"=>Hash::make('Admin@123#'),
         ]);
-
-        $user->assignRole(['Admin']); */
-
-        // User::factory()->count(1000)->create();
-        /* $users = User::where('id','>','1')->get();
-        foreach($users as $user):
-            $user->assignRole(['Manager']);
-        endforeach; */
         /* Designation::create([
             'name'=>"Designation 1"
         ]);
@@ -100,23 +92,6 @@ class UserCreateSeeder extends Seeder
             'name'=>'important',
         ]); */
 
-      /*   for($i=1; $i<=5;$i++):
-            echo $i;
-            dd("s;d's;d'sd");
-            Facilitiy::create([
-                'name'=>'facilities '.$i
-            ]);
-        endfor;
-        for($i=1;$i<=5;$i++):
-            Tag::create([
-                'name'=>'Tag '.$i
-            ]);
-        endfor; */
-        for($i=1;$i<=10;$i++):
-            Destination::create([
-                'name'=>'destinations '.$i
-            ]);
-        endfor;
 
        
     }

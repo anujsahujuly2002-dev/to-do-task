@@ -23,6 +23,24 @@ class ToDoController extends Controller
 
     public function store(Request $request) {
         // $user->notify(New ToDoListNotification());
+        $statuses = Status::get();
+        if($statuses->count() ==0):
+            Status::create([
+                'name'=>'new',
+            ]);
+            Status::create([
+                'name'=>'in Progress',
+            ]);
+            Status::create([
+                'name'=>'completed',
+            ]);
+            Status::create([
+                'name'=>'trash',
+            ]);
+            Status::create([
+                'name'=>'important',
+            ]);
+        endif;
         $toDoList = ToDoList::create([
             'title'=>$request->input('title'),
             'description'=>$request->input('description'),
@@ -32,12 +50,8 @@ class ToDoController extends Controller
             'category_id'=>$request->input('category_id'),
             'priority'=>$request->input('priority'),
             'tag'=>$request->input('tag'),
-            'status_id'=>$request->input('status_id')
+            'status_id'=>1
         ]);
-
-
-        $user = User::find($toDoList->assginee_id);
-        $user->notify(New ToDoListNotification($user->name.$user->last_name));
         if($toDoList):
             return response()->json([
                 'status'=>true,

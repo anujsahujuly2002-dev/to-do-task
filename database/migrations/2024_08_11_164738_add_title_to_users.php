@@ -17,11 +17,7 @@ return new class extends Migration
             $table->date('date_of_birth')->after('last_name');
             $table->string('profile_picture')->after('date_of_birth');
             $table->string('mobile_no')->after('profile_picture');
-            $table->unsignedBigInteger('department_id')->after('password');
-            $table->foreign('department_id')->references('id')->on('departments')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->unsignedBigInteger('designation_id')->after('department_id');
-            $table->foreign('designation_id')->references('id')->on('designations')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->enum('status',['0','1'])->default('1')->comment('0=inactive,1=active')->after('designation_id');
+            $table->enum('status',['0','1'])->default('1')->comment('0=inactive,1=active')->after('profile_picture');
         });
     }
 
